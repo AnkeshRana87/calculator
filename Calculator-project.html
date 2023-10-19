@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		body
+		{
+			background-color: rgb(80, 80, 80);
+			margin: 0;
+			padding: 0;
+		}
+		table
+		{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			text-align: center;
+		}
+		#header
+		{
+			height: 100px;
+			width: 98%;
+			border: 0;
+			outline: none;
+			text-align: right;
+			font-weight: bold;
+			font-size: 25px;
+		}
+
+		#btn
+		{
+			background: black;
+			color: gray;
+			font-size: 20px;
+			text-align: center;
+			width: 100%;
+			padding: 15px;
+			color: white;
+		}
+		#btn-on
+		{
+			background: black;
+			color: gray;
+			font-size: 20px;
+			text-align: center;
+			width: 100%;
+			padding: 15px;
+			color: white;
+		}
+		#btn.multi
+		{
+			background: blueviolet;
+			color: white;
+		}
+		#btn.equal
+		{
+			background: gold;
+			color: white;
+		}
+
+	</style>
+</head>
+<body>
+
+    <table>
+      		<tr>
+    			<td colspan="4"><input type="text" id="header" readonly> </td>
+    		</tr>
+    		<tr>
+    			<td><input type="button" id="btn-on" value="ON" onclick="offcal()"></td>
+    			<td><input type="button" id="btn" value="Clear" onclick="clr()"></td>
+    			<td><input type="button" id="btn" value="Back" onclick="bck()"></td>
+    			<td><input type="button" id="btn" value="√" class="multi" onclick="sqrt()"></td>
+    		</tr>
+
+    		<tr>
+    			<td><input type="button" value="9" id="btn" onclick="typing(9)"></td>
+    			<td><input type="button" value="8" id="btn" onclick="typing(8)"></td>
+    			<td><input type="button" value="7" id="btn" onclick="typing(7)"></td>
+    			<td><input type="button" value="+" id="btn" class="multi" onclick="typing('+')"></td>
+    		</tr>
+             
+             <tr>
+    			<td><input type="button" value="6" id="btn" onclick="typing(6)"></td>
+    			<td><input type="button" value="5" id="btn" onclick="typing(5)"></td>
+    			<td><input type="button" value="4" id="btn" onclick="typing(4)"></td>
+    			<td><input type="button" value="-" id="btn" class="multi" onclick="typing('-')"></td>
+    		</tr>
+
+    		<tr>
+    			<td><input type="button" value="3" id="btn" onclick="typing(3)"></td>
+    			<td><input type="button" value="2" id="btn" onclick="typing(2)"></td>
+    			<td><input type="button" value="1" id="btn" onclick="typing(1)"></td>
+    			<td><input type="button" value="×" id="btn" class="multi" onclick="typing('*')"></td>
+    		</tr>
+
+    		<tr>
+    			<td><input type="button" value="0" id="btn" onclick="typing(0)"></td>
+    			<td><input type="button" value="." id="btn" onclick="typing('.')"></td>
+    			<td><input type="button" value="/" id="btn" onclick="typing('/')"></td>
+    			<td><input type="button" value="=" id="btn" class="equal" onclick="equal()"></td>
+    		</tr>
+
+    </table>
+</body>
+
+<script type="text/javascript">
+	
+	function typing(n)
+	{
+		document.getElementById('header').value+=n;
+	} 
+
+	function sqrt()
+	{
+		var a = document.getElementById('header').value;
+		var s = Math.sqrt(a);
+		document.getElementById('header').value=s;
+	}
+
+	function equal()
+	{
+		var a = document.getElementById('header').value;
+		var b = eval(a);
+		document.getElementById('header').value=b;
+	}
+
+	function clr()
+	{
+		document.getElementById('header').value="";
+	}
+
+	function bck()
+	{
+		var data="";
+		var a = document.getElementById('header').value;
+
+		var len = a.length-1;
+
+		for(var b=1; b<=len; b++)
+		{
+			data += a[b];
+		}
+
+		document.getElementById('header').value=data;
+	}
+
+	function offcal()
+	{
+		var temp="";
+        document.getElementById('header').style.background="linear-gradient(white,gray)";
+        document.getElementById('btn-on').value="ON";
+        document.getElementById('btn-on').style.background="linear-gradient(gray,white)";
+        document.getElementById('btn-on').style.color="gray";
+	}
+    
+
+</script>
+</html>
